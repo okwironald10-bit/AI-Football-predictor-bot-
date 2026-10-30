@@ -57,4 +57,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 app = Application.builder().token(BOT_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("today", today))
+def run_flask():
+    flask_app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 8000)))
+import threading
+threading.Thread(target=run_flask).start()
 app.run_polling()
