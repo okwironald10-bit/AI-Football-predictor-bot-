@@ -1,7 +1,11 @@
-import requests, math, os
+import requests, math, os, threading
+from flask import Flask
 from datetime import datetime
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+flask_app = Flask(__name__)
+@flask_app.route('/')
+def home(): return "Bot is alive!"
 
 API_FOOTBALL_KEY = os.getenv("API_KEY")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
